@@ -19,6 +19,19 @@ resetButton.addEventListener("click", () => reset());
 
 recordButton.addEventListener("click", () => storeTime());
 
+document.addEventListener("keypress", (e) => {
+  switch(e.key) {
+    case "s":
+      startStopButton.click();
+      break;
+    case "t":
+      recordButton.click();
+      break;
+    case "r":
+      resetButton.click();
+  }
+})
+
 function startClock(){
   interval = setInterval(() => {
     timerValue++
