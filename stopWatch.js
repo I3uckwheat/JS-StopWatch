@@ -15,9 +15,9 @@ startStopButton.addEventListener("click", () => {
   }
 })
 
-resetButton.addEventListener("click", () => reset());
+resetButton.addEventListener("click", reset);
 
-recordButton.addEventListener("click", () => storeTime());
+recordButton.addEventListener("click", storeTime);
 
 document.addEventListener("keypress", (e) => {
   switch(e.key) {
