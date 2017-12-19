@@ -1,5 +1,6 @@
 const timerDisplay = document.getElementById("stopWatchDisplay");
 const startStopButton = document.getElementById("startStop");
+const resetButton = document.getElementById("reset");
 let interval;
 let timerValue = 0;
 
@@ -10,6 +11,8 @@ startStopButton.addEventListener("click", () => {
     startClock();
   }
 })
+
+resetButton.addEventListener("click", () => reset())
 
 function startClock(){
   interval = setInterval(() => {
