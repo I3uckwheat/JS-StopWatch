@@ -1,6 +1,9 @@
+"use strict";
 const timerDisplay = document.getElementById("stopWatchDisplay");
-const startStopButton = document.getElementById("startStop");
 const resetButton = document.getElementById("reset");
+const pastTimes = document.getElementById("pastTimes");
+const startStopButton = document.getElementById("startStop");
+const recordButton = document.getElementById("recordTime");
 let interval;
 let timerValue = 0;
 
@@ -12,7 +15,9 @@ startStopButton.addEventListener("click", () => {
   }
 })
 
-resetButton.addEventListener("click", () => reset())
+resetButton.addEventListener("click", () => reset());
+
+recordButton.addEventListener("click", () => storeTime());
 
 function startClock(){
   interval = setInterval(() => {
@@ -27,6 +32,14 @@ function stopClock(){
 }
 
 function reset(){
+  stopClock();
   timerValue = 0
   timerDisplay.textContent = 0;
+  pastTimes.innerHTML = "";
+}
+
+function storeTime(){
+  const time = document.createElement("p");
+  time.textContent = timerValue / 100;
+  pastTimes.appendChild(time);
 }
