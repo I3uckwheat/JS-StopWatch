@@ -15,21 +15,26 @@ startStopButton.addEventListener("click", () => {
   }
 })
 
-resetButton.addEventListener("click", reset);
+resetButton.addEventListener("click", () => {
+  stopClock();
+  timerValue = 0
+  timerDisplay.textContent = 0;
+  pastTimes.innerHTML = "";
+});
 
-recordButton.addEventListener("click", storeTime);
+recordButton.addEventListener("click", () => {
+  const time = document.createElement("p");
+  time.textContent = timerValue / 100;
+  pastTimes.appendChild(time);
+});
 
-document.addEventListener("keypress", (e) => {
-  switch(e.key) {
-    case "s":
-      startStopButton.click();
-      break;
-    case "t":
-      recordButton.click();
-      break;
-    case "r":
-      resetButton.click();
+document.addEventListener("keypress", e => {
+  const keys = {
+    s: startStopbutton,
+    t: recordButton,
+    r: resetButton
   }
+  keys[e.key].click();
 })
 
 function startClock(){
@@ -42,17 +47,4 @@ function startClock(){
 function stopClock(){
   clearInterval(interval);
   interval = null;
-}
-
-function reset(){
-  stopClock();
-  timerValue = 0
-  timerDisplay.textContent = 0;
-  pastTimes.innerHTML = "";
-}
-
-function storeTime(){
-  const time = document.createElement("p");
-  time.textContent = timerValue / 100;
-  pastTimes.appendChild(time);
 }
