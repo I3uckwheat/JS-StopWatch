@@ -7,7 +7,7 @@ const recordButton = document.getElementById("recordTime");
 let interval;
 let timerValue = 0;
 
-startStopButton.addEventListener("click", () => interval ? stopClock() : startClock())
+startStopButton.addEventListener("click", () => interval ? stopClock() : startClock());
 
 resetButton.addEventListener("click", () => {
   stopClock();
